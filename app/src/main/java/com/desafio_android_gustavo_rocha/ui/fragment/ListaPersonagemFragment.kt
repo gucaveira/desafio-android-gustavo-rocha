@@ -20,6 +20,8 @@ class ListaPersonagemFragment : Fragment() {
         } ?: throw IllegalArgumentException("Contexto inválido")
     }
     var personagemSelecionado: (personagem: Personagem) -> Unit = {}
+  //  private val viewModel: PersonagemViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

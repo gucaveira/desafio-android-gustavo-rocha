@@ -12,7 +12,7 @@ import com.desafio_android_gustavo_rocha.models.Personagem
 import com.desafio_android_gustavo_rocha.ui.recyclerview.adapter.PersonagemAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment() {
+class ListaPersonagemFragment : Fragment() {
 
     private val adapter by lazy {
         context?.let {

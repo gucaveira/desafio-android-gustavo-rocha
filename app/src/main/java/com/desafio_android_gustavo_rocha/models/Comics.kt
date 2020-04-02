@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(primaryKeys = ["id"])
 @Parcelize
-data class Detalhes(
+data class Comics(
     val id: Int,
     val digitalId: String?,
     val titulo: String?,

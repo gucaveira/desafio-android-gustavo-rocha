@@ -7,5 +7,5 @@ import androidx.room.Entity
 data class DeskItem(
     val deskItemId: Int,
     @Embedded(prefix = "item_")
-    val item: Detalhes
+    val item: Comics
 )

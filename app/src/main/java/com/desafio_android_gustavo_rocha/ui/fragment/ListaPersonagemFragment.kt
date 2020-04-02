@@ -21,10 +21,6 @@ class ListaPersonagemFragment : Fragment() {
     }
     var personagemSelecionado: (personagem: Personagem) -> Unit = {}
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

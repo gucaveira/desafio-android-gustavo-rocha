@@ -7,7 +7,7 @@
     tools:context=".ui.activity.DetalhePersonagem">
 
     <ImageView
-        android:id="@+id/img_personagem"
+        android:id="@+id/item_img_personagem"
         android:layout_width="411dp"
         android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,7 +16,7 @@
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/tv_nome"
+        android:id="@+id/item_tv_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -25,7 +25,7 @@
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_personagem" />
+        app:layout_constraintTop_toBottomOf="@+id/item_img_personagem" />
 
     <TextView
         android:id="@+id/tv_descricao"
@@ -33,9 +33,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/tv_nome"
-        app:layout_constraintStart_toStartOf="@+id/tv_nome"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+        app:layout_constraintEnd_toEndOf="@+id/item_tv_nome"
+        app:layout_constraintStart_toStartOf="@+id/item_tv_nome"
+        app:layout_constraintTop_toBottomOf="@+id/item_tv_nome" />
 
     <TextView
         android:id="@+id/tv_preco"

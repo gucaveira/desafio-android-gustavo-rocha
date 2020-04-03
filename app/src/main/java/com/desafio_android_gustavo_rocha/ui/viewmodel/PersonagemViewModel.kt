@@ -6,9 +6,9 @@ import com.desafio_android_gustavo_rocha.models.Personagem
 import com.desafio_android_gustavo_rocha.repository.PersonagemRepository
 import com.desafio_android_gustavo_rocha.repository.Resource
 
-//class PersonagemViewModel(private val repository: PersonagemRepository) : ViewModel() {
+class PersonagemViewModel(private val repository: PersonagemRepository) : ViewModel() {
 
-   // fun buscaTodos(): LiveData<Resource<List<Personagem>?>> {
-        //return repository.buscar()
-   // }
-//}
+    fun buscarPersonagem(): LiveData<Resource<List<Personagem>?>> {
+        return repository.buscarPersonagem()
+    }
+}

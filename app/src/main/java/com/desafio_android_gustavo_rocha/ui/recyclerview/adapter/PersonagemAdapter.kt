@@ -30,6 +30,13 @@ class PersonagemAdapter(
         holder.vincula(personagem)
     }
 
+    fun atualiza(personagens : List<Personagem>) {
+        notifyItemRangeRemoved(0, this.personagemLista.size)
+        this.personagemLista.clear()
+        this.personagemLista.addAll(personagens)
+        notifyItemRangeInserted(0, this.personagemLista.size)
+    }
+
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 

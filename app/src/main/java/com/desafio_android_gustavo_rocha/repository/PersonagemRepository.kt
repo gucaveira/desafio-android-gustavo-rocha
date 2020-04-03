@@ -10,6 +10,12 @@ class PersonagemRepository(private val webClient: PersonagemWebClient) {
     private val mediatorLiveData = MediatorLiveData<Resource<List<Personagem>?>>()
 
 
-    //fun buscar(): LiveData<Resource<List<Personagem>?>> {
-    //}
+    fun buscarPersonagem(): LiveData<Resource<List<Personagem>?>> {
+         webClient.buscaPersonagem(quandoSucesso = {
+
+        }, quandoFalha = {
+
+        })
+
+    }
 }

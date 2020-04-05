@@ -55,7 +55,7 @@ class PersonagemAdapter(
             this.personagem = personagem
             itemView.item_tv_nome.text = personagem.name
             Picasso.get()
-                .load("https://" + personagem.thumbnail.path + personagem.thumbnail.extension)
+                .load("${personagem.thumbnail.path}.${personagem.thumbnail.extension}")
                 .into(itemView.item_img_personagem)
         }
     }

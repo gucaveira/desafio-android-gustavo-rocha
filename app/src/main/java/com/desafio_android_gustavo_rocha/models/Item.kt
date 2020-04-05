@@ -7,10 +7,4 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(primaryKeys = ["resourceURI"])
 @Parcelize
-data class Item(
-    val resourceURI: String,
-    val nome: String,
-    val type: String?,
-    val role: String?,
-    var image: String?
-) : Parcelable
+data class Item(val resourceURI: String, val name: String, val type: String?, val role : String? , var image : String?) : Parcelable

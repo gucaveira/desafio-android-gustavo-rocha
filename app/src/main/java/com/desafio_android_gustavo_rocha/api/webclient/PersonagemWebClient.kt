@@ -1,10 +1,11 @@
-package com.desafio_android_gustavo_rocha.retrofit.webclient
+package com.desafio_android_gustavo_rocha.api.webclient
 
 import com.desafio_android_gustavo_rocha.BuildConfig
-import com.desafio_android_gustavo_rocha.models.Comics
-import com.desafio_android_gustavo_rocha.models.Personagem
-import com.desafio_android_gustavo_rocha.retrofit.AppRetrofit
-import com.desafio_android_gustavo_rocha.retrofit.service.MarvelApi
+import com.desafio_android_gustavo_rocha.api.ApiResponse
+import com.desafio_android_gustavo_rocha.api.AppRetrofit
+import com.desafio_android_gustavo_rocha.api.service.MarvelApi
+import com.desafio_android_gustavo_rocha.models.CharacterResponse
+import com.desafio_android_gustavo_rocha.models.ComicsResponse
 import com.desafio_android_gustavo_rocha.utils.Utils
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,7 +21,6 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
     private val timestamp = Date().time
     private val hash =
         Utils.md5(timestamp.toString() + BuildConfig.MARVEL_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY)
-
 
     private fun <T> executaRequisicao(
         call: Call<T>,
@@ -44,12 +44,11 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
     }
 
     fun buscaPersonagem(
-        quandoSucesso: (personagem: List<Personagem>?) -> Unit,
+        quandoSucesso: (personagem: ApiResponse<CharacterResponse>?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {
         executaRequisicao(
             service.getPersonagens(
-                "-modified",
                 timestamp.toString(),
                 BuildConfig.MARVEL_API_KEY,
                 hash,
@@ -61,7 +60,7 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
 
     fun buscarComicsPorPersonagem(
         id: Int,
-        quandoSucesso: (comics: List<Comics>?) -> Unit,
+        quandoSucesso: (comics: ApiResponse<ComicsResponse>?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {
         executaRequisicao(

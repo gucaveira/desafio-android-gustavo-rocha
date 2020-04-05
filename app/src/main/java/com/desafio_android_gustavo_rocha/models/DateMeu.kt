@@ -4,4 +4,4 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Preco (val type : String?, val preco: Double) : Parcelable
+data class DateMeu (val type : String?, val date : String?) : Parcelable

@@ -1,8 +1,9 @@
-package com.desafio_android_gustavo_rocha.retrofit.service
+package com.desafio_android_gustavo_rocha.api.service
 
 import androidx.annotation.Nullable
-import com.desafio_android_gustavo_rocha.models.Comics
-import com.desafio_android_gustavo_rocha.models.Personagem
+import com.desafio_android_gustavo_rocha.api.ApiResponse
+import com.desafio_android_gustavo_rocha.models.CharacterResponse
+import com.desafio_android_gustavo_rocha.models.ComicsResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,14 +13,12 @@ interface MarvelApi {
 
     @GET("/v1/public/characters")
     fun getPersonagens(
-        @SuppressWarnings("SameParameterValue") @Nullable
-        @Query("orderBy") modified: String,
         @Query("ts") ts: String,
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,
         @Nullable @Query("offset") offset: Int,
         @Query("limit") limit: Int
-    ): Call<List<Personagem>>
+    ): Call<ApiResponse<CharacterResponse>>
 
     @GET("/v1/public/characters/{characterId}/comics")
     fun getComicsByPersonagemId(
@@ -28,5 +27,5 @@ interface MarvelApi {
         @Query("hash") hash: String,
         @Query("ts") ts: String,
         @Query("orderBy") orderBy: String
-    ): Call<List<Comics>>
+    ): Call<ApiResponse<ComicsResponse>>
 }

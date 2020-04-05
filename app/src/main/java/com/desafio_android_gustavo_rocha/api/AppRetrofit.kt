@@ -1,6 +1,6 @@
-package com.desafio_android_gustavo_rocha.retrofit
+package com.desafio_android_gustavo_rocha.api
 
-import com.desafio_android_gustavo_rocha.retrofit.service.MarvelApi
+import com.desafio_android_gustavo_rocha.api.service.MarvelApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

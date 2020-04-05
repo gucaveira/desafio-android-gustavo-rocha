@@ -4,7 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 
 
-@Entity(primaryKeys = ["personagemId"])
-data class FavPersonagem(val personagemId : Int,
+@Entity(primaryKeys = ["characterId"])
+data class FavCharacter( val characterId : Int ,
                          @Embedded( prefix = "character_")
-                         val personagem: Personagem)
+                         val character: Character)

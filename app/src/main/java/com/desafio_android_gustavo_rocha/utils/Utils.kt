@@ -4,8 +4,7 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 object Utils {
-
-    var IMAGE_NOT_AVAILABLE = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+    const val CHAVE_PERSONAGEM = "personagemId"
 
     fun md5(stringToHash: String): String {
         val md5 = "MD5"

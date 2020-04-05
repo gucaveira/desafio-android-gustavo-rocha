@@ -1,5 +1,6 @@
 package com.desafio_android_gustavo_rocha.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -12,6 +13,7 @@ import com.desafio_android_gustavo_rocha.repository.CharactersRepository
 import com.desafio_android_gustavo_rocha.ui.recyclerview.adapter.PersonagemAdapter
 import com.desafio_android_gustavo_rocha.ui.viewmodel.PersonagemViewModel
 import com.desafio_android_gustavo_rocha.ui.viewmodel.factory.PersonagemViewModelFactory
+import com.desafio_android_gustavo_rocha.utils.Utils.CHAVE_PERSONAGEM
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         PersonagemAdapter(context = this)
     }
 
-    var personagemSelecionado: (personagem: Character) -> Unit = {}
 
     private val viewModel by lazy {
         val repository = CharactersRepository()
@@ -44,7 +45,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configuraAdapter() {
-        adapter.quandoItemClicado = personagemSelecionado
+        adapter.quandoItemClicado = this::abreDetalhes
+    }
+
+    private fun abreDetalhes(it: Character) {
+        val intent = Intent(this, DetalheActivity::class.java)
+        intent.putExtra(CHAVE_PERSONAGEM, it)
+        startActivity(intent)
     }
 
     private fun buscarPersonagem() {

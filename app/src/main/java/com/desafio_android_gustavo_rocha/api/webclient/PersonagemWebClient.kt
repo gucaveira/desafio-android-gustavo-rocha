@@ -1,7 +1,6 @@
 package com.desafio_android_gustavo_rocha.api.webclient
 
 import com.desafio_android_gustavo_rocha.BuildConfig
-import com.desafio_android_gustavo_rocha.api.ApiResponse
 import com.desafio_android_gustavo_rocha.api.AppRetrofit
 import com.desafio_android_gustavo_rocha.api.service.MarvelApi
 import com.desafio_android_gustavo_rocha.models.CharacterResponse
@@ -16,7 +15,7 @@ private const val REQUISICAO_NAO_SUCEDIDA = "Requisição não sucedida"
 
 class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
 
-    private val defaultLimit = 10
+    private val defaultLimit = 20
     private var offset = 0
     private val timestamp = Date().time
     private val hash =
@@ -44,11 +43,12 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
     }
 
     fun buscaPersonagem(
-        quandoSucesso: (personagem: ApiResponse<CharacterResponse>?) -> Unit,
+        quandoSucesso: (personagem: CharacterResponse?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {
         executaRequisicao(
             service.getPersonagens(
+                "-modified",
                 timestamp.toString(),
                 BuildConfig.MARVEL_API_KEY,
                 hash,
@@ -60,7 +60,7 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
 
     fun buscarComicsPorPersonagem(
         id: Int,
-        quandoSucesso: (comics: ApiResponse<ComicsResponse>?) -> Unit,
+        quandoSucesso: (comics: ComicsResponse?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {
         executaRequisicao(

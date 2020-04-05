@@ -13,7 +13,7 @@ class CharactersRepository(
         val mutableLiveData = MutableLiveData<List<Character>>()
         webClient.buscaPersonagem(
             quandoSucesso = {
-                val list = it?.body?.data?.results
+                val list: MutableList<Character>? = it?.data?.results
                 mutableLiveData.value = list
             }, quandoFalha = {}
         )

@@ -26,6 +26,7 @@ interface MarvelApi {
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,
         @Query("ts") ts: String,
-        @Query("orderBy") orderBy: String
+        @Query("orderBy") orderBy: String,
+        @Query("noVariants") ComicsVariants: Boolean
     ): Call<ComicsResponse>
 }

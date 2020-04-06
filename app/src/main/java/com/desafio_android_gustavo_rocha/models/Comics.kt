@@ -1,12 +1,9 @@
 package com.desafio_android_gustavo_rocha.models
 
 import android.os.Parcelable
-import androidx.room.Embedded
-import androidx.room.Entity
 import kotlinx.android.parcel.Parcelize
 
 
-@Entity(primaryKeys = ["id"])
 @Parcelize
 data class Comics(
     val id: Int,
@@ -23,7 +20,6 @@ data class Comics(
     val issn: String?,
     val format: String?,
     val pageCount: Int,
-    @Embedded(prefix = "series_")
     val series: Item?,
     val dateMeus: MutableList<DateMeu>?,
     val prices: MutableList<Price>?,

@@ -69,7 +69,8 @@ class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
                 BuildConfig.MARVEL_API_KEY,
                 hash,
                 timestamp.toString(),
-                "-modified"
+                "-modified",
+                true
             ), quandoSucesso, quandoFalha
         )
 

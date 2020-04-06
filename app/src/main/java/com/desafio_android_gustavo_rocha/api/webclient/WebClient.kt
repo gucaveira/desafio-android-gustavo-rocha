@@ -13,7 +13,7 @@ import java.util.*
 
 private const val REQUISICAO_NAO_SUCEDIDA = "Requisição não sucedida"
 
-class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
+class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
 
     private val defaultLimit = 20
     private var offset = 0
@@ -59,7 +59,7 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
     }
 
     fun buscarComicsPorPersonagem(
-        id: Int,
+        id: Int?,
         quandoSucesso: (comics: ComicsResponse?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {
@@ -69,7 +69,7 @@ class PersonagemWebClient(private val service: MarvelApi = AppRetrofit().marvelS
                 BuildConfig.MARVEL_API_KEY,
                 hash,
                 timestamp.toString(),
-                "-onsaleDate"
+                "-modified"
             ), quandoSucesso, quandoFalha
         )
 

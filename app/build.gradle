@@ -21,8 +21,8 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "MARVEL_API_KEY",  getApiKey())
-            buildConfigField("String", "MARVEL_PRIVATE_KEY",  getPrivateApiKey())
+            buildConfigField("String", "MARVEL_API_KEY", getApiKey())
+            buildConfigField("String", "MARVEL_PRIVATE_KEY", getPrivateApiKey())
         }
     }
 

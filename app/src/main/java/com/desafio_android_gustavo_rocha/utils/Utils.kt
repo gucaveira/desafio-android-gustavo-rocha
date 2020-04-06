@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException
 
 object Utils {
     const val CHAVE_PERSONAGEM = "personagemId"
+    const val CHAVE_HQ = "HqId"
 
     fun md5(stringToHash: String): String {
         val md5 = "MD5"

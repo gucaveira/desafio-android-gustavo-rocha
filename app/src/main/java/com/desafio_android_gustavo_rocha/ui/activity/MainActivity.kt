@@ -13,7 +13,7 @@ import com.desafio_android_gustavo_rocha.repository.CharactersRepository
 import com.desafio_android_gustavo_rocha.ui.recyclerview.adapter.PersonagemAdapter
 import com.desafio_android_gustavo_rocha.ui.viewmodel.PersonagemViewModel
 import com.desafio_android_gustavo_rocha.ui.viewmodel.factory.PersonagemViewModelFactory
-import com.desafio_android_gustavo_rocha.utils.Utils.CHAVE_PERSONAGEM
+import com.desafio_android_gustavo_rocha.utils.Utils.KEY_CHARACTER
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun abreDetalhes(it: Character) {
         val intent = Intent(this, DetalheActivity::class.java)
-        intent.putExtra(CHAVE_PERSONAGEM, it)
+        intent.putExtra(KEY_CHARACTER, it)
         startActivity(intent)
     }
 

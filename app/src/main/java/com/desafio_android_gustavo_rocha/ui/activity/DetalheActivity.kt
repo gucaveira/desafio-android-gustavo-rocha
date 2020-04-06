@@ -5,8 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.desafio_android_gustavo_rocha.R
 import com.desafio_android_gustavo_rocha.models.Character
-import com.desafio_android_gustavo_rocha.utils.Utils.CHAVE_HQ
-import com.desafio_android_gustavo_rocha.utils.Utils.CHAVE_PERSONAGEM
+import com.desafio_android_gustavo_rocha.utils.Utils.KEY_CHARACTER
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detalhe_personagem.*
 
@@ -15,9 +14,9 @@ class DetalheActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_detalhe_personagem)
 
-        val character = intent.extras?.getParcelable<Character>(CHAVE_PERSONAGEM)
+        val character = intent.extras?.getParcelable<Character>(KEY_CHARACTER)
 
-        detalhe_tv_nome.text = character?.name
+        detalhe_tv_titulo.text = character?.name
         detalhe_tv_descricao.text = character?.description
         Picasso.get()
             .load(character?.thumbnail?.path + "." + character?.thumbnail?.extension)
@@ -25,7 +24,7 @@ class DetalheActivity : Activity() {
 
         detalhe_btn_preco.setOnClickListener {
             val intent = Intent(this, HqActivity::class.java)
-            intent.putExtra(CHAVE_PERSONAGEM, character)
+            intent.putExtra(KEY_CHARACTER, character)
             startActivity(intent)
 
         }

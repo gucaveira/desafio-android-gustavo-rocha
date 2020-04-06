@@ -7,7 +7,7 @@ import com.desafio_android_gustavo_rocha.repository.ComicRepository
 
 class ComicViewModel(private val comicRepository: ComicRepository) : ViewModel() {
 
-    fun buscarById(id: Int?): LiveData<List<Comics>> {
-        return comicRepository.buscarComicById(id)
+    fun getComicsByCharacterId(id: Int): LiveData<List<Comics>> {
+        return comicRepository.getComicsByCharacterId(id)
     }
 }

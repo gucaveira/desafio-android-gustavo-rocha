@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface MarvelApi {
 
     @GET("/v1/public/characters")
-    fun getPersonagens(
+    fun getCharacters(
         @Query("orderBy") modified: String,
         @Query("ts") ts: String,
         @Query("apikey") apiKey: String,
@@ -21,7 +21,7 @@ interface MarvelApi {
     ): Call<CharacterResponse>
 
     @GET("/v1/public/characters/{characterId}/comics")
-    fun getComicsByPersonagemId(
+    fun getComicsByCharacterId(
         @Path("characterId") personagemId: String,
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,

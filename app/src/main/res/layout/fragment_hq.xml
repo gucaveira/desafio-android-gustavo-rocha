@@ -6,21 +6,25 @@
 
     <ImageView
         android:id="@+id/hq_img_personagem"
-        android:layout_width="411dp"
-        android:layout_height="120dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/hq_tv_nome"
+        android:id="@+id/hq_tv_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="Titulo"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hq_img_personagem" />
@@ -29,18 +33,19 @@
         android:id="@+id/hq_tv_descricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/hq_tv_nome"
-        app:layout_constraintStart_toStartOf="@+id/hq_tv_nome"
-        app:layout_constraintTop_toBottomOf="@+id/hq_tv_nome" />
+        android:text="Carregando"
+        app:layout_constraintEnd_toEndOf="@+id/hq_tv_titulo"
+        app:layout_constraintStart_toStartOf="@+id/hq_tv_titulo"
+        app:layout_constraintTop_toBottomOf="@+id/hq_tv_titulo" />
 
     <TextView
-        android:id="@+id/tv_preco"
+        android:id="@+id/hq_tv_preco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="Preço"
         app:layout_constraintEnd_toEndOf="@+id/hq_tv_descricao"
         app:layout_constraintStart_toStartOf="@+id/hq_tv_descricao"
         app:layout_constraintTop_toBottomOf="@+id/hq_tv_descricao" />

@@ -15,7 +15,7 @@ private const val REQUISICAO_NAO_SUCEDIDA = "Requisição não sucedida"
 
 class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
 
-    private val defaultLimit = 20
+    private val defaultLimit = 80
     private var offset = 0
     private val timestamp = Date().time
     private val hash =
@@ -47,7 +47,7 @@ class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
         quandoFalha: (erro: String?) -> Unit
     ) {
         executaRequisicao(
-            service.getPersonagens(
+            service.getCharacters(
                 "-modified",
                 timestamp.toString(),
                 BuildConfig.MARVEL_API_KEY,
@@ -58,13 +58,13 @@ class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
         )
     }
 
-    fun buscarComicsPorPersonagem(
+    fun getComicsByCharacterId(
         id: Int?,
         quandoSucesso: (comics: ComicsResponse?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {
         executaRequisicao(
-            service.getComicsByPersonagemId(
+            service.getComicsByCharacterId(
                 id.toString(),
                 BuildConfig.MARVEL_API_KEY,
                 hash,

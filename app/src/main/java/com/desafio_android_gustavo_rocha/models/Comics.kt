@@ -25,7 +25,6 @@ data class Comics(
     val prices: MutableList<Price>?,
     val creators: CollectionItem?,
     val characters: CollectionItem?,
-    val comics: CollectionItem?,
     val resourceURI: String,
     val startYear: Int,
     val endYear: Int,

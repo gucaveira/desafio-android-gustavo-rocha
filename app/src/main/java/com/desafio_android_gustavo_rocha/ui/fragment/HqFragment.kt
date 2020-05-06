@@ -1,20 +1,22 @@
-package com.desafio_android_gustavo_rocha.ui.activity
+package com.desafio_android_gustavo_rocha.ui.fragment
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.desafio_android_gustavo_rocha.R
-import com.desafio_android_gustavo_rocha.models.Character
-import com.desafio_android_gustavo_rocha.models.Comics
+import com.desafio_android_gustavo_rocha.models.Comic
 import com.desafio_android_gustavo_rocha.repository.ComicRepository
 import com.desafio_android_gustavo_rocha.ui.viewmodel.ComicViewModel
 import com.desafio_android_gustavo_rocha.ui.viewmodel.factory.ComicsViewModelFactory
-import com.desafio_android_gustavo_rocha.utils.Utils.KEY_CHARACTER
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_hq.*
 
-class HqActivity : AppCompatActivity() {
+class HqFragment : Fragment() {
 
     private val viewModel by lazy {
         val repository = ComicRepository()
@@ -23,13 +25,16 @@ class HqActivity : AppCompatActivity() {
         provedor.get(ComicViewModel::class.java)
     }
 
+    private val argument by navArgs<HqFragmentArgs>()
+    private val idPersonagem by lazy { argument.comicId }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_hq)
-        val characterId = intent.extras?.getParcelable<Character>(KEY_CHARACTER)
-        if (characterId != null) {
-            getComicsByCharacterId(characterId.id)
-        }
+        getComicsByCharacterId(idPersonagem)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_hq, container, false)
     }
 
     fun getComicsByCharacterId(personagemId: Int) {
@@ -40,8 +45,11 @@ class HqActivity : AppCompatActivity() {
         })
     }
 
-    private fun instantiateFields(comics: List<Comics>) {
-        val comic = comics[0]
+    private fun instantiateFields(comics: List<Comic>) {
+
+        //mudar para price
+        val comicMaisCara = comics.sortedBy { it.id }
+        val comic = comicMaisCara[0]
 
         hq_tv_titulo.text = comic.title
 

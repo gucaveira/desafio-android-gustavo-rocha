@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class Comics(
+data class Comic(
     val id: Int,
     val digitalId: String?,
     val title: String?,

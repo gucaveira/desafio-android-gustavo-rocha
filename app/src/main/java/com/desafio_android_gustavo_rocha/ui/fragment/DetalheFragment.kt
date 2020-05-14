@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.desafio_android_gustavo_rocha.R
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_detalhe_personagem.*
+import kotlinx.android.synthetic.main.fragment_personagem.*
 
 class DetalheFragment : Fragment() {
 
@@ -18,7 +18,7 @@ class DetalheFragment : Fragment() {
     private val controller by lazy { findNavController() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_detalhe_personagem, container, false)
+        return inflater.inflate(R.layout.fragment_personagem, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class DetalheFragment : Fragment() {
             .into(detalhe_img_personagem)
 
         detalhe_btn_preco.setOnClickListener {
-            val directions = DetalheFragmentDirections.actionDetalheToHq(personagem.id)
+            val directions = DetalheFragmentDirections.actionDetalhePersonagemToComigs(personagem.id)
             controller.navigate(directions)
         }
     }

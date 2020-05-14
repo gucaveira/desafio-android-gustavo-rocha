@@ -7,32 +7,32 @@
 
     <fragment
         android:id="@+id/ListaPersonagem"
-        android:name="com.desafio_android_gustavo_rocha.ui.fragment.RecyclerFragmet"
+        android:name="com.desafio_android_gustavo_rocha.ui.fragment.ListaPersonagemFragmet"
         android:label="Lista de Personagem"
-        tools:layout="@layout/recycler" >
+        tools:layout="@layout/lista_personagem" >
         <action
-            android:id="@+id/action_ListaPersonagem_to_Detalhe"
-            app:destination="@id/Detalhe"
+            android:id="@+id/action_ListaPersonagem_to_detalhePersonagem"
+            app:destination="@id/detalhePersonagem"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
-        android:id="@+id/Detalhe"
+        android:id="@+id/detalhePersonagem"
         android:name="com.desafio_android_gustavo_rocha.ui.fragment.DetalheFragment"
-        android:label="Detalhe"
-        tools:layout="@layout/fragment_detalhe_personagem">
+        android:label="Detalhe Personagem"
+        tools:layout="@layout/fragment_personagem">
         <argument
             android:name="personagem"
             app:argType="com.desafio_android_gustavo_rocha.models.Character" />
         <action
-            android:id="@+id/action_Detalhe_to_hq"
-            app:destination="@id/hq"
+            android:id="@+id/action_detalhePersonagem_to_comigs"
+            app:destination="@id/comigs"
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
-        android:id="@+id/hq"
-        android:name="com.desafio_android_gustavo_rocha.ui.fragment.HqFragment"
-        android:label="Hq"
-        tools:layout="@layout/fragment_hq">
+        android:id="@+id/comigs"
+        android:name="com.desafio_android_gustavo_rocha.ui.fragment.ComigsFragment"
+        android:label="Comigs"
+        tools:layout="@layout/fragment_comigs">
         <argument
             android:name="comicId"
             app:argType="integer" />

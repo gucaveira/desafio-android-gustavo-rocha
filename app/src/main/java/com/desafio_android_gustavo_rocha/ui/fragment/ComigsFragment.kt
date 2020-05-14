@@ -14,9 +14,9 @@ import com.desafio_android_gustavo_rocha.repository.ComicRepository
 import com.desafio_android_gustavo_rocha.ui.viewmodel.ComicViewModel
 import com.desafio_android_gustavo_rocha.ui.viewmodel.factory.ComicsViewModelFactory
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_hq.*
+import kotlinx.android.synthetic.main.fragment_comigs.*
 
-class HqFragment : Fragment() {
+class ComigsFragment : Fragment() {
 
     private val viewModel by lazy {
         val repository = ComicRepository()
@@ -25,7 +25,7 @@ class HqFragment : Fragment() {
         provedor.get(ComicViewModel::class.java)
     }
 
-    private val argument by navArgs<HqFragmentArgs>()
+    private val argument by navArgs<ComigsFragmentArgs>()
     private val idPersonagem by lazy { argument.comicId }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +34,11 @@ class HqFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_hq, container, false)
+        return inflater.inflate(R.layout.fragment_comigs, container, false)
     }
 
     fun getComicsByCharacterId(personagemId: Int) {
-        viewModel.getComicsByCharacterId(personagemId).observe(this, Observer { comics ->
+        viewModel.buscarPersonagemPorId(personagemId).observe(this, Observer { comics ->
             comics?.let {
                 instantiateFields(it)
             }
@@ -51,19 +51,19 @@ class HqFragment : Fragment() {
         val comicMaisCara = comics.sortedBy { it.id }
         val comic = comicMaisCara[0]
 
-        hq_tv_titulo.text = comic.title
+        comigs_tv_titulo.text = comic.title
 
         if (comic.description == null || comic.description.isEmpty()) {
-            hq_tv_descricao.text = "without description"
+            comigs_tv_descricao.text = "without description"
         }
 
-        hq_tv_descricao.text = comic.description
+        comigs_tv_descricao.text = comic.description
 
         Picasso.get().load(comic.thumbnail?.path + "." + comic.thumbnail?.extension)
-            .into(hq_img_personagem)
+            .into(comigs_img_personagem)
 
         val price = comic.prices?.get(0)?.price
 
-        hq_tv_preco.text = "$ " + price.toString()
+        comigs_tv_preco.text = "$ " + price.toString()
     }
 }

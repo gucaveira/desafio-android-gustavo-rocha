@@ -1,7 +1,7 @@
 package com.desafio_android_gustavo_rocha.di.modules
 
 import com.desafio_android_gustavo_rocha.api.webclient.WebClient
-import com.desafio_android_gustavo_rocha.repository.CharactersRepository
+import com.desafio_android_gustavo_rocha.repository.PersonagemRepository
 import com.desafio_android_gustavo_rocha.ui.recyclerview.adapter.PersonagemAdapter
 import com.desafio_android_gustavo_rocha.ui.viewmodel.PersonagemViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -13,8 +13,8 @@ val AppModules = module {
         WebClient(get())
     }
 
-    single<CharactersRepository> {
-        CharactersRepository(get())
+    single<PersonagemRepository> {
+        PersonagemRepository(get())
     }
 
     viewModel<PersonagemViewModel> {

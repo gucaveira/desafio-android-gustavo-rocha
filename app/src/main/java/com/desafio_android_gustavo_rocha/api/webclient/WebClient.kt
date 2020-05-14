@@ -42,7 +42,7 @@ class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
         })
     }
 
-    fun buscaPersonagem(
+    fun getCharacters(
         quandoSucesso: (personagem: CharacterResponse?) -> Unit,
         quandoFalha: (erro: String?) -> Unit
     ) {

@@ -7,7 +7,7 @@ import com.desafio_android_gustavo_rocha.models.Comic
 
 class ComicRepository(private val webClient: WebClient = WebClient()) {
 
-    fun getComicsByCharacterId(id: Int): LiveData<List<Comic>> {
+    fun buscarPersonagemPorId(id: Int): LiveData<List<Comic>> {
         val mutableLiveData = MutableLiveData<List<Comic>>()
         webClient.getComicsByCharacterId(id = id,
             quandoSucesso = {

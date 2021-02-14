@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/comigs_img_personagem"
+        android:id="@+id/comic_img_personagem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
@@ -16,7 +16,7 @@
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/comigs_tv_titulo"
+        android:id="@+id/comic_tv_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,11 +28,11 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comigs_img_personagem"
+        app:layout_constraintTop_toBottomOf="@+id/comic_img_personagem"
         tools:text="@string/titulo" />
 
     <TextView
-        android:id="@+id/comigs_tv_descricao"
+        android:id="@+id/comic_tv_descricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -42,17 +42,17 @@
         android:text="@string/descricao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/comigs_tv_titulo"
+        app:layout_constraintTop_toBottomOf="@+id/comic_tv_titulo"
         tools:text="@string/descricao" />
 
     <TextView
-        android:id="@+id/comigs_tv_preco"
+        android:id="@+id/comic_tv_preco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/preco"
-        app:layout_constraintEnd_toEndOf="@+id/comigs_tv_descricao"
-        app:layout_constraintStart_toStartOf="@+id/comigs_tv_descricao"
-        app:layout_constraintTop_toBottomOf="@+id/comigs_tv_descricao"
+        app:layout_constraintEnd_toEndOf="@+id/comic_tv_descricao"
+        app:layout_constraintStart_toStartOf="@+id/comic_tv_descricao"
+        app:layout_constraintTop_toBottomOf="@+id/comic_tv_descricao"
         tools:text="@string/preco" />
 </androidx.constraintlayout.widget.ConstraintLayout>

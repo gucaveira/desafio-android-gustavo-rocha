@@ -1,8 +1,9 @@
 package com.desafio_android_gustavo_rocha
 
 import android.app.Application
-import com.desafio_android_gustavo_rocha.di.modules.AppModules
+import com.desafio_android_gustavo_rocha.di.modules.daoModule
 import com.desafio_android_gustavo_rocha.di.modules.uiModule
+import com.desafio_android_gustavo_rocha.di.modules.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -11,7 +12,13 @@ class AppApplication : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@AppApplication)
-            modules(listOf(AppModules, uiModule))
+            modules(
+                listOf(
+                    daoModule,
+                    uiModule,
+                    viewModelModule
+                )
+            )
         }
     }
 }

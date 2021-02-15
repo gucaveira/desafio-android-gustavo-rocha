@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.desafio_android_gustavo_rocha.api.webclient.WebClient
 import com.desafio_android_gustavo_rocha.models.Comic
 
-class ComicRepository(private val webClient: WebClient = WebClient()) {
+class ComicRepository(private val webClient: WebClient) {
 
     fun buscarPersonagemPorId(id: Int): LiveData<List<Comic>> {
         val mutableLiveData = MutableLiveData<List<Comic>>()

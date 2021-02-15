@@ -1,7 +1,6 @@
 package com.desafio_android_gustavo_rocha.models
 
 import android.os.Parcelable
-import androidx.room.Entity
 import kotlinx.android.parcel.Parcelize
 
 

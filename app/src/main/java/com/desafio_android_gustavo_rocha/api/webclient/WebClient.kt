@@ -1,7 +1,6 @@
 package com.desafio_android_gustavo_rocha.api.webclient
 
 import com.desafio_android_gustavo_rocha.BuildConfig
-import com.desafio_android_gustavo_rocha.api.AppRetrofit
 import com.desafio_android_gustavo_rocha.api.service.MarvelApi
 import com.desafio_android_gustavo_rocha.models.CharacterResponse
 import com.desafio_android_gustavo_rocha.models.ComicsResponse
@@ -13,7 +12,7 @@ import java.util.*
 
 private const val REQUISICAO_NAO_SUCEDIDA = "Requisição não sucedida"
 
-class WebClient(private val service: MarvelApi = AppRetrofit().marvelService) {
+class WebClient(private val service: MarvelApi) {
 
     private val defaultLimit = 80
     private var offset = 0

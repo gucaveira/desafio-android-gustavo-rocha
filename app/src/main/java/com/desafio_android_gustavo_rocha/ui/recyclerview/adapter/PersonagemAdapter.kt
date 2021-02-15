@@ -1,6 +1,5 @@
 package com.desafio_android_gustavo_rocha.ui.recyclerview.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,16 @@ import com.desafio_android_gustavo_rocha.databinding.ItemListaBinding
 import com.desafio_android_gustavo_rocha.models.Character
 import com.squareup.picasso.Picasso
 
-class PersonagemAdapter(
-    private val context: Context,
-    var personagemLista: MutableList<Character> = mutableListOf(),
+class PersonagemAdapter
+    (
+    personagemLista: List<Character> = listOf(),
     var quandoItemClicado: (noticia: Character) -> Unit = {}
 ) : RecyclerView.Adapter<PersonagemAdapter.ViewHolder>() {
 
+    private val personagemLista =  personagemLista.toMutableList()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context)
+        val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_lista, parent, false)
         return ViewHolder(view)
     }

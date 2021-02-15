@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.desafio_android_gustavo_rocha.R
+import com.desafio_android_gustavo_rocha.databinding.ItemListaBinding
 import com.desafio_android_gustavo_rocha.models.Character
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_lista.view.*
 
 class PersonagemAdapter(
     private val context: Context,
@@ -38,10 +38,10 @@ class PersonagemAdapter(
         notifyItemRangeInserted(0, this.personagemLista.size)
     }
 
-    inner class ViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private lateinit var personagem: Character
+        private var binding: ItemListaBinding
 
         init {
             itemView.setOnClickListener {
@@ -49,14 +49,15 @@ class PersonagemAdapter(
                     quandoItemClicado(personagem)
                 }
             }
+            binding = ItemListaBinding.bind(itemView)
         }
 
         fun vincula(personagem: Character) {
             this.personagem = personagem
-            itemView.item_tv_nome.text = personagem.name
+            binding.itemTvNome.text = personagem.name
             Picasso.get()
                 .load("${personagem.thumbnail.path}.${personagem.thumbnail.extension}")
-                .into(itemView.item_img_personagem)
+                .into(binding.itemImgPersonagem)
         }
     }
 }

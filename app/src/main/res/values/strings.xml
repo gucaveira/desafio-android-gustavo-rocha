@@ -3,5 +3,5 @@
     <string name="descricao">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum sollicitudin neque, nec molestie dolor. Duis facilisis scelerisque massa eget viverra. Cras urna tortor, volutpat et consectetur nec, hendrerit a ligula. Nullam semper euismod imperdiet. Aenean ullamcorper, dolor at vestibulum eleifend, turpis mi condimentum est, a tempor nisi purus quis purus. Quisque fringilla imperdiet eros varius elementum. Proin sollicitudin pellentesque mauris, et faucibus dui iaculis ac. Vestibulum fringilla lorem nec metus molestie, condimentum suscipit libero pharetra. Fusce id libero rhoncus justo aliquam accumsan. Curabitur tellus leo, tristique non eros tempus, fringilla tincidunt urna. Mauris eu orci massa. Pellentesque nulla mi, sollicitudin vitae auctor at, sollicitudin eget tortor. Donec eget arcu sit amet arcu dignissim tristique.</string>
     <string name="preco">R$ 12,90</string>
     <string name="titulo">Homem Aranha</string>
-    <string name="comig">ver Comig</string>
+    <string name="comic">ver Comic</string>
 </resources>

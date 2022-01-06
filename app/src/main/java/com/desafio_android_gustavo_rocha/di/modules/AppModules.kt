@@ -29,7 +29,7 @@ val retrofitModule = module {
     }
 
     single<MarvelApi> { get<Retrofit>().create(MarvelApi::class.java) }
-    single<OkHttpClient> {
+    single {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder()
@@ -39,19 +39,19 @@ val retrofitModule = module {
 }
 
 val daoModule = module {
-    single<WebClient> { WebClient(get()) }
-    single<PersonagemRepository> { PersonagemRepository(get()) }
-    single<ComicRepository> { ComicRepository(get()) }
+    single { WebClient(get()) }
+    single { PersonagemRepository(get()) }
+    single { ComicRepository(get()) }
 }
 
 val viewModelModule = module {
-    viewModel<PersonagemViewModel> { PersonagemViewModel(get()) }
-    viewModel<ComicViewModel> { ComicViewModel(get()) }
+    viewModel { PersonagemViewModel(get()) }
+    viewModel { ComicViewModel(get()) }
 }
 
 val uiModule = module {
-    factory<ComicFragment> { ComicFragment() }
-    factory<DetalhePersonagemFragment> { DetalhePersonagemFragment() }
-    factory<ListaPersonagemFragmet> { ListaPersonagemFragmet() }
-    factory<PersonagemAdapter> { PersonagemAdapter() }
+    factory { ComicFragment() }
+    factory { DetalhePersonagemFragment() }
+    factory { ListaPersonagemFragmet() }
+    factory { PersonagemAdapter() }
 }

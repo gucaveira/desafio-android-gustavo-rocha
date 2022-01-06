@@ -3,7 +3,6 @@ package com.desafio_android_gustavo_rocha.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,10 +43,13 @@ class ListaPersonagemFragmet : Fragment(R.layout.lista_personagem) {
 
 
     private fun buscarPersonagem() {
-        viewModel.buscar().observe(viewLifecycleOwner, Observer {
-            it?.let { persongens ->
-                adapter.atualiza(persongens)
-            }
-        })
+        viewModel.buscar()
+        bind.progressBar.visibility = View.VISIBLE
+
+        viewModel.characterData.observe(viewLifecycleOwner) {
+            bind.progressBar.visibility = View.GONE
+            bind.recyclerPersonagem.visibility = View.VISIBLE
+            adapter.atualiza(it)
+        }
     }
 }

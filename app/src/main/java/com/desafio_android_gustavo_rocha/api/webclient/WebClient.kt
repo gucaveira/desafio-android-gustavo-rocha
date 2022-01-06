@@ -2,76 +2,68 @@ package com.desafio_android_gustavo_rocha.api.webclient
 
 import com.desafio_android_gustavo_rocha.BuildConfig
 import com.desafio_android_gustavo_rocha.api.service.MarvelApi
-import com.desafio_android_gustavo_rocha.models.CharacterResponse
-import com.desafio_android_gustavo_rocha.models.ComicsResponse
-import com.desafio_android_gustavo_rocha.utils.Utils
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.desafio_android_gustavo_rocha.models.Character
+import com.desafio_android_gustavo_rocha.models.Comic
+import com.desafio_android_gustavo_rocha.extensions.md5
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
-
-private const val REQUISICAO_NAO_SUCEDIDA = "Requisição não sucedida"
+import kotlin.coroutines.suspendCoroutine
 
 class WebClient(private val service: MarvelApi) {
 
     private val defaultLimit = 80
     private var offset = 0
-    private val timestamp = Date().time
-    private val hash =
-        Utils.md5(timestamp.toString() + BuildConfig.MARVEL_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY)
+    private val timestamp = Date().time.toString()
+    private val hash = md5(timestamp + BuildConfig.MARVEL_PRIVATE_KEY + BuildConfig.MARVEL_API_KEY)
 
-    private fun <T> executaRequisicao(
-        call: Call<T>,
-        quandoSucesso: (personagens: T?) -> Unit,
-        quandoFalha: (erro: String?) -> Unit
-    ) {
-        call.enqueue(object : Callback<T> {
-            override fun onResponse(call: Call<T>, response: Response<T>) {
+    suspend fun getCharacters(): List<Character> {
+        return suspendCoroutine { continuation ->
+            CoroutineScope(Dispatchers.IO).launch {
+
+                val response = service.getCharacters(
+                        "-modified",
+                        timestamp,
+                        BuildConfig.MARVEL_API_KEY,
+                        hash,
+                        offset,
+                        defaultLimit)
+
                 if (response.isSuccessful) {
-                    quandoSucesso(response.body())
+                    response.body()?.data?.let {
+                        continuation.resumeWith(Result.success(it.results))
+
+                    } ?: continuation.resumeWith(Result.failure(Throwable(response.errorBody().toString())))
+
                 } else {
-                    quandoFalha(REQUISICAO_NAO_SUCEDIDA)
+                    continuation.resumeWith(Result.failure(Throwable(response.errorBody().toString())))
                 }
             }
+        }
+    }
 
-            override fun onFailure(call: Call<T>, t: Throwable) {
-                quandoFalha(t.message)
+    suspend fun getComicsByCharacterId(id: Int?): List<Comic> {
+        return suspendCoroutine { continuation ->
+            CoroutineScope(Dispatchers.IO).launch {
+                val response =
+                    service.getComicsByCharacterId(id.toString(),
+                        BuildConfig.MARVEL_API_KEY,
+                        hash,
+                        timestamp,
+                        "-modified",
+                        true)
+
+                if (response.isSuccessful) {
+                    response.body()?.data?.let {
+                        continuation.resumeWith(Result.success(it.results))
+
+                    } ?: continuation.resumeWith(Result.failure(Throwable(response.errorBody().toString())))
+
+                } else {
+                    continuation.resumeWith(Result.failure(Throwable(response.errorBody().toString())))
+                }
             }
-
-        })
-    }
-
-    fun getCharacters(
-        quandoSucesso: (personagem: CharacterResponse?) -> Unit,
-        quandoFalha: (erro: String?) -> Unit
-    ) {
-        executaRequisicao(
-            service.getCharacters(
-                "-modified",
-                timestamp.toString(),
-                BuildConfig.MARVEL_API_KEY,
-                hash,
-                offset,
-                defaultLimit
-            ), quandoSucesso, quandoFalha
-        )
-    }
-
-    fun getComicsByCharacterId(
-        id: Int?,
-        quandoSucesso: (comics: ComicsResponse?) -> Unit,
-        quandoFalha: (erro: String?) -> Unit
-    ) {
-        executaRequisicao(
-            service.getComicsByCharacterId(
-                id.toString(),
-                BuildConfig.MARVEL_API_KEY,
-                hash,
-                timestamp.toString(),
-                "-modified",
-                true
-            ), quandoSucesso, quandoFalha
-        )
-
+        }
     }
 }

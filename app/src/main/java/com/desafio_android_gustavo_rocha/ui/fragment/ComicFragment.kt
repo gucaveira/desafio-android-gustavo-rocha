@@ -3,7 +3,6 @@ package com.desafio_android_gustavo_rocha.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.desafio_android_gustavo_rocha.R
 import com.desafio_android_gustavo_rocha.databinding.FragmentComicBinding
@@ -27,9 +26,13 @@ class ComicFragment : Fragment(R.layout.fragment_comic) {
 
     private fun getComicByCharacterId(personagemId: Int) {
         comicViewModel.buscarPersonagemPorId(personagemId)
-            .observe(
-                viewLifecycleOwner,
-                Observer { comics -> comics?.let { instantiateFields(it) } })
+        binding.progressBarComic.visibility = View.VISIBLE
+
+        comicViewModel.characterComicsData.observe(viewLifecycleOwner) {
+            instantiateFields(it)
+            binding.progressBarComic.visibility = View.GONE
+            binding.constraintLayoutComic.visibility = View.VISIBLE
+        }
     }
 
     private fun instantiateFields(comics: List<Comic>) {

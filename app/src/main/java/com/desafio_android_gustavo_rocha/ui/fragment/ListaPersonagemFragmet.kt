@@ -44,10 +44,10 @@ class ListaPersonagemFragmet : Fragment(R.layout.lista_personagem) {
 
     private fun buscarPersonagem() {
         viewModel.buscar()
-        bind.progressBar.visibility = View.VISIBLE
 
         viewModel.characterData.observe(viewLifecycleOwner) {
-            bind.progressBar.visibility = View.GONE
+            bind.shimmerLayout.visibility = View.GONE
+            bind.shimmerLayout.stopShimmer()
             bind.recyclerPersonagem.visibility = View.VISIBLE
             adapter.atualiza(it)
         }

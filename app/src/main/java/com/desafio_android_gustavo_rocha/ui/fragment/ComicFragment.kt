@@ -26,11 +26,12 @@ class ComicFragment : Fragment(R.layout.fragment_comic) {
 
     private fun getComicByCharacterId(personagemId: Int) {
         comicViewModel.buscarPersonagemPorId(personagemId)
-        binding.progressBarComic.visibility = View.VISIBLE
 
         comicViewModel.characterComicsData.observe(viewLifecycleOwner) {
             instantiateFields(it)
-            binding.progressBarComic.visibility = View.GONE
+            binding.shimmerLayoutComic.visibility = View.GONE
+            binding.shimmerLayoutComic.stopShimmer()
+
             binding.constraintLayoutComic.visibility = View.VISIBLE
         }
     }
